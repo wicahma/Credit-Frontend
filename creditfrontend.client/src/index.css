@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.alert-info {
+    @apply bg-blue-200 border border-blue-300 text-blue-900;
+}
+
+.alert-error {
+    @apply bg-red-200 border border-red-300 text-red-900;
+}
+
+.alert-success {
+    @apply bg-lime-200 border border-lime-300 text-lime-900;
+}
+
+.alert-warning {
+    @apply bg-yellow-200 border border-yellow-300 text-yellow-900;
+}
+
+.base-shadow {
+    @apply rounded-lg;
+    box-shadow: 5px 5px 0 rgb(3 7 18);
+}
+
+.base-transform {
+    transform: translate(-5px, -5px) translateX(5px);
+}
+
+button {
+    @apply rounded-lg px-2 py-1 transition-all duration-100;
+    border: 1px solid rgb(3 7 18);
+    box-shadow: 5px 5px 0 rgb(3 7 18);
+    transform: translate(-5px, -5px) translateX(5px);
+}
+
+button:active {
+    border: 1px solid rgb(3 7 18);
+    box-shadow: 0px 0px 0 rgb(3 7 18);
+    transform: translate(0, 0) translateX(5px);
+}
+
+input {
+    @apply rounded-lg px-3 py-1 transition-all duration-100 h-11;
+    border: 1px solid rgb(3 7 18);
+    box-shadow: 5px 5px 0 rgb(3 7 18);
+    transform: translate(-5px, -5px) translateX(5px);
+}
+
+input:focus {
+    border: 1px solid rgb(3 7 18);
+    box-shadow: 0px 0px 0 rgb(3 7 18);
+    transform: translate(0, 0) translateX(5px);
+}
+
+.error {
+    border: 1px solid red;
+    box-shadow: 5px 5px 0 red;
+    background-color: rgba(255, 0, 0, 0.1) !important;
+    @apply !text-red-200 !bg-red-900;
+}
+
+::placeholder .error {
+    @apply !text-red-800;
+}
+
+.loader {
+    @apply border-2;
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l20-1 0.8s infinite linear alternate, l20-2 1.6s infinite linear;
+}
+
+@keyframes l20-1 {
+    0% {
+        clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+    }
+
+    12.5% {
+        clip-path: polygon( 50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0% );
+    }
+
+    25% {
+        clip-path: polygon( 50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100% );
+    }
+
+    50% {
+        clip-path: polygon( 50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100% );
+    }
+
+    62.5% {
+        clip-path: polygon( 50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100% );
+    }
+
+    75% {
+        clip-path: polygon( 50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100% );
+    }
+
+    100% {
+        clip-path: polygon( 50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100% );
+    }
+}
+
+@keyframes l20-2 {
+    0% {
+        transform: scaleY(1) rotate(0deg);
+    }
+
+    49.99% {
+        transform: scaleY(1) rotate(135deg);
+    }
+
+    50% {
+        transform: scaleY(-1) rotate(0deg);
+    }
+
+    100% {
+        transform: scaleY(-1) rotate(-135deg);
+    }
+}
+
