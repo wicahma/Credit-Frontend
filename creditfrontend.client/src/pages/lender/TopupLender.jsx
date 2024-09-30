@@ -1,6 +1,11 @@
 function TopupLender() {
   return (
-    <p>Topup world!</p>
+      <>
+          <div>
+              <h1 className="text-3xl font-semibold">Topup Lender</h1>
+              <p>Isi Ulang saldo kamu disini!</p>
+          </div>
+      </>
   );
 }
 
