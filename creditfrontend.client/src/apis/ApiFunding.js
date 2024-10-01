@@ -3,7 +3,7 @@ import { alertService } from "../utils/alert";
 export const getDetailFunding = async (id) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/funding/detail-funding?id=${id}`, {
+        const response = await fetch(`${window.location.origin}/api/funding/detail-funding?id=${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export const getDetailFunding = async (id) => {
 export const getHistoryLender = async () => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/funding/history-lender`, {
+        const response = await fetch(`${window.location.origin}/api/funding/history-lender`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

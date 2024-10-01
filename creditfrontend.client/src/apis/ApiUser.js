@@ -3,7 +3,7 @@ import { alertService } from "../utils/alert";
 export const getAllUser = async () => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch("api/user/get-users", {
+        const response = await fetch(`${window.location.origin}/api/user/get-users`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export const getAllUser = async () => {
 export const updateUser = async ({ name, balance, role }, id) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/user/update-user?id=${id}`, {
+        const response = await fetch(`${window.location.origin}/api/user/update-user?id=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const updateUser = async ({ name, balance, role }, id) => {
 export const createUser = async ({ name, email, pass, role }) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/user/create-user`, {
+        const response = await fetch(`${window.location.origin}/api/user/create-user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export const createUser = async ({ name, email, pass, role }) => {
 export const deleteUser = async (id) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/user/delete-user?id=${id}`, {
+        const response = await fetch(`${window.location.origin}/api/user/delete-user?id=${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -111,8 +111,8 @@ export const deleteUser = async (id) => {
 export const updateBalanceLender = async (amount) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/user/update-balance?balance=${amount}`, {
-            method: "PUT",
+        const response = await fetch(`${window.location.origin}/api/user/update-balance?balance=${amount}`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,

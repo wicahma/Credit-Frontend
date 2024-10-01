@@ -22,6 +22,7 @@ import { Alert } from './components/Alert';
 function App() {
     const { theme } = useContext(ThemeContext);
     const [role, setRole] = useState(null);
+    const [balance, setBalance] = useState(0);
     const [token, setToken] = useState(null);
     const location = useLocation();
     const nav = useNavigate();
@@ -31,6 +32,7 @@ function App() {
         console.log(location)
         const role = localStorage.getItem('role');
         const token = localStorage.getItem('token');
+        const balance = localStorage.getItem('balance');
         if (!role) {
             setRole(null);
             gotoLogin();
@@ -42,6 +44,11 @@ function App() {
             gotoLogin();
         }
         else setToken(token);
+
+        if (!balance) {
+            setBalance(0);
+        }
+        else setBalance(balance);
     }, [location.pathname]);
 
     const gotoLogin = () => {
@@ -66,7 +73,7 @@ function App() {
             <div className="fixed top-16 start-3 z-[2000]">
                 <Alert />
             </div>
-            <Navbar role={role} />
+            <Navbar role={role} balance={balance} />
             <Routes>
                 <Route path="/" element={<Navigate to="/login" replace={true} />} />
                 <Route path="/login" element={<Login />} />

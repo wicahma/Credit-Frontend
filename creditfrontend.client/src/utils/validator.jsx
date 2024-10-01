@@ -27,4 +27,31 @@ const validatePassword = (val) => {
     return { isError: false, message: "" };
 };
 
-export { validateEmail, validatePassword };
+const validateNumber = (val, accept0) => {
+    const checkIsNumber = /^\d+$/;
+    const checkIfOnlyZero = /^0+$/;
+    if (accept0) {
+        const isError = !checkIsNumber.test(Number(val));
+        return {
+            isError: isError,
+            message: isError ? "Input harus angka!" : null
+        }
+    } else {
+        const isError1 = !checkIsNumber.test(Number(val));
+        const isError2 = checkIfOnlyZero.test(Number(val));
+        if (isError1) return {
+            isError: true,
+            message: "Input harus angka!"
+        }
+        if (isError2) return {
+            isError: true,
+            message: "Input tidak boleh 0!"
+        }
+    }
+    return {
+        isError: false,
+        message: ""
+    }
+}
+
+export { validateEmail, validatePassword, validateNumber };

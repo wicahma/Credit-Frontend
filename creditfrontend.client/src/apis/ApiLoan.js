@@ -1,7 +1,9 @@
+import { alertService } from "../utils/alert";
+
 export const deleteLoan = async (id) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/loan/delete?id=${id}`, {
+        const response = await fetch(`${window.location.origin}/api/loan/delete?id=${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -24,10 +26,10 @@ export const deleteLoan = async (id) => {
     }
 }
 
-export const createLoan = async ({ amount, interest, duration }) => {
+export const createLoan = async ({ amount, interest }) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/loan/create`, {
+        const response = await fetch(`${window.location.origin}/api/loan/create`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -36,7 +38,7 @@ export const createLoan = async ({ amount, interest, duration }) => {
             body: JSON.stringify({
                 amount: amount,
                 interest: interest,
-                duration: duration,
+                duration: 12,
             })
         });
         if (response.status === 200) {
@@ -45,6 +47,7 @@ export const createLoan = async ({ amount, interest, duration }) => {
             return data;
         } else {
             const data = await response.json();
+            if (data.title) { alertService.error(data.title); return null; }
             alertService.error(data.message);
             return null;
         }
@@ -58,7 +61,7 @@ export const createLoan = async ({ amount, interest, duration }) => {
 export const payLoan = async (month, id) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/loan/paythebill?id=${id}`, {
+        const response = await fetch(`${window.location.origin}/api/loan/paythebill?id=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -74,6 +77,7 @@ export const payLoan = async (month, id) => {
             return data;
         } else {
             const data = await response.json();
+            if (data.title) { alertService.error(data.title); return null; }
             alertService.error(data.message);
             return null;
         }
@@ -87,7 +91,7 @@ export const payLoan = async (month, id) => {
 export const getHistoryBorrower = async (type) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/loan/history-borrower?type=${type}`, {
+        const response = await fetch(`${window.location.origin}/api/loan/history-borrower?type=${type}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -113,7 +117,7 @@ export const getHistoryBorrower = async (type) => {
 export const acceptLoan = async (id) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/loan/acc-mhanx?id=${id}`, {
+        const response = await fetch(`${window.location.origin}/api/loan/acc-mhanx?id=${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -139,7 +143,7 @@ export const acceptLoan = async (id) => {
 export const getListRequestedLoan = async () => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`api/loan/rikwes-peminjam`, {
+        const response = await fetch(`${window.location.origin}/api/loan/rikwes-peminjam`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "../../node_modules/react-router-dom/dist/index";
 import { ThemeContext } from "../context/ThemeContext";
+import { currencyFormatter } from "../utils/formatter";
 
-function Navbar({ role }) {
+function Navbar({ role, balance }) {
     const nav = useNavigate();
     const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -12,6 +13,8 @@ function Navbar({ role }) {
         localStorage.setItem("theme", theme);
         nav(0);
     }
+
+
 
     return role !== null ? (
         <nav className="bg-gray-300 dark:bg-gray-800 h-15 w-full px-3 py-2 flex gap-5 justify-between pt-4">
@@ -39,6 +42,8 @@ function Navbar({ role }) {
                 </div>
             )}
             <div className="flex items-center justify-center gap-3">
+                <div className="base-shadow border border-gray-900 px-2 h-9 flex items-center justify-center translate-y-[-5px] uppercase font-bold">Balance {currencyFormatter(balance)}</div>
+                <div className="base-shadow border border-gray-900 px-2 h-9 flex items-center justify-center translate-y-[-5px] uppercase font-bold">{role}</div>
                 <button onClick={handleLogout} className="bg-red-500 px-4 flex items-center justify-center font-semibold text-red-200 h-9">
                     <p>Logout</p>
                 </button>

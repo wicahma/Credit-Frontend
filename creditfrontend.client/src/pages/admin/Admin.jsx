@@ -13,7 +13,6 @@ const Admin = () => {
     const [deleteId, setDeleteId] = useState(null);
     const [users, setUsers] = useState([]);
 
-
     useEffect(() => {
         getAllUser().then(res => {
             console.log(res);
@@ -326,8 +325,6 @@ const Admin = () => {
                 id={deleteId}
                 closeCallback={(users) => {
                     setDeleteId(null);
-                    console.log("USER DATA")
-                    console.log(users)
                     if (users) {
                         setUsers(users);
                     }

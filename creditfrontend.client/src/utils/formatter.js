@@ -11,4 +11,11 @@ const currencyFormatter = (amount) => {
     }).format(amount);
 };
 
-export { dateTimeFormatter, currencyFormatter };
+const addMonthsToDate = (dateString, month) => {
+    let date = new Date(dateString);
+    date.setMonth(date.getMonth() + month);
+
+    return dateTimeFormatter(date);
+}
+
+export { dateTimeFormatter, currencyFormatter, addMonthsToDate };

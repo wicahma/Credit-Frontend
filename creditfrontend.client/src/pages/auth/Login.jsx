@@ -88,7 +88,7 @@ function Login() {
 
     return (
         <>
-            <div className="h-screen">
+            <div className="min-h-screen overflow-scroll">
                 <div className="fixed right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2 inline-block px-3 max-w-[400px]">
                     <div className="bg-gray-50 rounded-lg px-3 py-2 border-gray-800 border base-shadow min-w-fit w-fit dark:text-gray-300 dark:bg-gray-600">
                         <h1 className="text-4xl font-bold text-start">Login</h1>

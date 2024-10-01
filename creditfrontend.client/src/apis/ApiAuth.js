@@ -2,7 +2,7 @@ import { alertService } from "../utils/alert";
 
 export const login = async ({ email, password }) => {
     try {
-        const response = await fetch("api/auth/login", {
+        const response = await fetch(`${window.location.origin}/api/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export const login = async ({ email, password }) => {
             localStorage.setItem("role", data.data.role);
             localStorage.setItem("email", data.data.email);
             localStorage.setItem("name", data.data.name);
-            localStorage.setItem("balance", data.data.email);
+            localStorage.setItem("balance", data.data.balance);
             return data;
         } else {
             const data = await response.json();
@@ -35,7 +35,7 @@ export const login = async ({ email, password }) => {
 export const register_admin = async ({ name, email, password }) => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch("api/auth/register", {
+        const response = await fetch(`${window.location.origin}/api/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export const register_admin = async ({ name, email, password }) => {
 export const get_user = async () => {
     try {
         const token = localStorage.getItem("token");
-        const response = await fetch("api/auth/user", {
+        const response = await fetch(`${window.location.origin}/api/auth/user`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -71,6 +71,7 @@ export const get_user = async () => {
         const data = await response.json();
         console.log(data)
         if (response.status === 200) {
+            localStorage.setItem("balance", data.data.balance);
             return data;
         } else {
             return null;
